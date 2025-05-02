@@ -1,34 +1,39 @@
 pipeline {
-    agent { 
+    agent {
         node {
-            label 'docker-agent-alpine'
-            }
-      }
-    triggers {
-        pollSCM '*/5 * * * *'
+            label 'docker-agent-alpine'  // Make sure this label matches your Docker cloud agent
+        }
     }
+
+    triggers {
+        pollSCM '*/5 * * * *'  // Polls Git for changes every 5 minutes
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
+                echo 'Susmitha Manthena - SE22UARI170'
+                echo "Stage: Building..."
                 sh '''
-                echo "Building from Jenkins file"
+                echo "Building from Jenkinsfile"
                 '''
             }
         }
+
         stage('Test') {
             steps {
-                echo "Testing.."
+                echo "Stage: Testing..."
                 sh '''
-                echo "Testing the build triggered from Jenkins file."
+                echo "Testing the build triggered from Jenkinsfile."
                 '''
             }
         }
+
         stage('Deliver') {
             steps {
-                echo 'Deliver....'
+                echo "Stage: Delivering..."
                 sh '''
-                echo "doing delivery stuff.."
+                echo "Doing delivery stuff..."
                 '''
             }
         }
